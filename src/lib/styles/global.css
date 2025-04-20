@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    --YOO-green-primary: #294e03;
+    --YOO-blue-primary: #a6dfea;
+    --YOO-red-primary: #ecb9b8;
+    --YOO-yellow-primary: #f2ef89;
+    --YOO-green-dark: #142601;
+    --YOO-green-medium: #618f32;
+    --YOO-green-light: #96bf70;
+    --YOO-green-lightest: #c8e4ae;
+    --YOO-blue-dark: #55bbcf;
+    --YOO-blue-darkest: #06687b;
+    --YOO-blue-light: #d9ebef;
+    --YOO-red-dark: #ce4c4a;
+    --YOO-red-light: #ffe4e4;
+    --YOO-yellow-dark: #f3d746;
+    --YOO-yellow-light: #f9f7ce;
+    --text-dark: #292d2a;
+    --text-medium: #616562;
+    --text-light: #aab0ab;
+    --text-active: #669f73;
+}
