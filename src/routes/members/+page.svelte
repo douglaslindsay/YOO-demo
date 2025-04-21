@@ -182,7 +182,9 @@
         margin-top: 10vh;
     }
     .col {
-        width: 30vw!important; /* flexbox is overriding this for the third card - fix? */
+        width: 30%!important; /* flexbox is overriding this for the third card - fix? */
+        flex-grow: 0;
+        flex-shrink: 0;
     }
     b+div {
         display: flex;

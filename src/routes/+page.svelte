@@ -10,6 +10,28 @@
     import selwyn from '$lib/assets/Selwyn_crest.png';
     import gdc from '$lib/assets/Glendowie_crest.png';
     import stcuths from '$lib/assets/St_Cuthberts_crest.png';
+    import Carousel from '$lib/components/Carousel.svelte';
+
+    const images = [
+        {
+            'date' : '2 October 2025',
+            'title' : 'Film Festival 2025',
+            'description' : 'Come join us at Berkley Mission Bay',
+            'photo' : 'Film Festival 2025.webp'
+        },
+        {
+            'date' : '2nd August, 12:30 - 3:30PM',
+            'title' : 'Art Gallery Exhibition',
+            'description' : 'Art Gallery!',
+            'photo' : 'Art Gallery Exhibition.webp'
+        },
+        {
+            'date' : '18 May 2024',
+            'title' : 'QuizEx',
+            'description' : 'QuizEx - a fun crossover between Quiz Night and MathEx!',
+            'photo' : 'QuizEx.webp'
+        },
+    ];
 </script>
 
 <style>
@@ -140,6 +162,15 @@
         display: flex;
         gap: 50px;
     }
+
+    .carousel {
+        padding-left: 5%;
+        padding-right: 5%;
+        background-color: var(--YOO-green-lightest);
+        padding-top: 2%;
+        padding-bottom: 2%;
+        height: 70vh;
+    }
 </style>
 
 <title>Youth of Ōrākei | Home</title>
@@ -174,6 +205,9 @@
         <h3>Connect</h3>
         <p>We strive to create and strengthen diverse connections within our community.</p>
     </div>
+</div>
+<div class="block carousel">
+    <Carousel title="Upcoming Events" images={images}/>
 </div>
 <div class="block organisations">
     <h2>Organisations and schools we work with</h2>
