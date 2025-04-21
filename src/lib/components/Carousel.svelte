@@ -2,7 +2,7 @@
     export let title;
     export let images;
 
-    let slide = 2;
+    let slide = 0;
 
     const mod = (n,m) => ((n % m) + m) % m; // modulo (javascript has no modulo op, only remainder)
 </script>
@@ -70,9 +70,9 @@
         content: "";
         top: 0;
         right: -30px;
-        background-color: transparent; /* Set to transparent for testing */
+        background-color: transparent;
         border-top-left-radius: 15px;
-        box-shadow: -15px 0 var(--YOO-green-lightest); /* Create the "filled" shadow around the corner */
+        box-shadow: -15px 0 var(--YOO-green-lightest);
         margin-left: 50px;
         overflow: hidden;
     }
@@ -83,9 +83,9 @@
         content: "";
         bottom: -15px;
         left: 0px;
-        background-color: transparent; /* Set to transparent for testing */
+        background-color: transparent;
         border-top-left-radius: 15px;
-        box-shadow: -15px 0 var(--YOO-green-lightest); /* Create the "filled" shadow around the corner */
+        box-shadow: -15px 0 var(--YOO-green-lightest);
         overflow: hidden;
     }
     .slide {
