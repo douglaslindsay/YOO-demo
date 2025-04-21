@@ -10,8 +10,8 @@
     import selwyn from '$lib/assets/Selwyn_crest.png';
     import gdc from '$lib/assets/Glendowie_crest.png';
     import stcuths from '$lib/assets/St_Cuthberts_crest.png';
-    import Carousel from '$lib/components/Carousel.svelte';
 
+    import Carousel from '$lib/components/Carousel.svelte';
     const images = [
         {
             'date' : '2 October 2025',
@@ -210,7 +210,7 @@
     <Carousel title="Upcoming Events" images={images}/>
 </div>
 <div class="block organisations">
-    <h2>Organisations and schools we work with</h2>
+    <h2>Organisations and schools we work with:</h2>
     <div>
         <a href="https://www.ayv.org.nz/"><img src={ayv} alt="Auckland Youth Voice"/></a>
         <a href="https://www.aucklandcouncil.govt.nz/about-auckland-council/how-auckland-council-works/local-boards/all-local-boards/orakei-local-board/Pages/default.aspx"><img src={orakei} alt="Ōrākei Local Board"/></a>
