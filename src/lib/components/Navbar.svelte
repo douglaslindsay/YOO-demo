@@ -23,11 +23,17 @@
     
     nav {
         display: flex;
-        gap: 50px;
+        flex-grow: 2;
+        justify-content: center;
     }
 
     .logo a { font-size: 23px; }
-    nav a { font-size: 18px; }
+    nav a {
+        font-size: 18px;
+        margin-left: 10px;
+        margin-right: 10px;
+        justify-content: space-between;
+    }
     
     a {
         text-decoration: none;
@@ -64,6 +70,15 @@
     }
     a:hover {
         color: var(--text-active);
+    }
+    @media screen and (max-width: 800px){
+        .navbar {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    @media screen and (max-width: 650px){
+        nav {display: none;}
     }
 </style>
 

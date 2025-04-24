@@ -39,10 +39,12 @@
         font-family: Arial, sans-serif;
     }
     .block {
-        height: 100vh;
+        min-height: 100vh;
         background-size: cover;
         padding-left: 10%;
         padding-right: 10%;
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
     .hero {
         background-image: url('/YOO_index-hero-bg-2.svg');
@@ -70,6 +72,19 @@
         display: flex;
         gap: 50px;
         align-items: center;
+        color: var(--text-dark);
+        padding-top: 30px;
+    }
+    .left {
+        width: 50%;
+    }
+    @media screen and (max-width: 725px){
+        .about {
+            flex-direction: column;
+        }
+        .left {
+            width: 100%;
+        }
     }
     .about > img {
         border-top-left-radius: 64px;
@@ -80,10 +95,6 @@
         height: 500px;
         object-fit: cover;
     }
-    .left {
-        width: 50%;
-    }
-    .about {color: var(--text-dark);}
     .about h2, .goals h2 {
         color: var(--YOO-blue-darkest);
         font-size: 34px;
@@ -113,6 +124,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        padding-bottom: 30px;
     }
     .card {
         border-radius: 16px;
@@ -121,7 +133,7 @@
         padding-bottom: 24px;
         padding-left: 48px;
         padding-right: 48px;
-        height: 10vh;
+        min-height: 10vh;
         box-shadow: rgba(0, 71, 82, 0.15) 4px 4px 7px -2px, rgba(0, 71, 82, 0.15) 12px 12px 18px -3px;
         transition: all 300ms;
     }
@@ -142,14 +154,15 @@
     }
 
     .organisations {
-        height: 50vh;
+        min-height: 50vh;
         background-color: var(--YOO-yellow-light);
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 20px;
     }
     .organisations img {
-        height: 150px;
+        height: 15vh;
     }
     .organisations > h2 {
         margin: 0;
@@ -161,6 +174,9 @@
     .organisations > div {
         display: flex;
         gap: 50px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .carousel {
@@ -215,7 +231,7 @@
         <a href="https://www.ayv.org.nz/"><img src={ayv} alt="Auckland Youth Voice"/></a>
         <a href="https://www.aucklandcouncil.govt.nz/about-auckland-council/how-auckland-council-works/local-boards/all-local-boards/orakei-local-board/Pages/default.aspx"><img src={orakei} alt="Ōrākei Local Board"/></a>
     </div>
-    <div>
+    <div style="height:100%;">
         <a href="https://www.sacredheart.school.nz/"><img src={shc} alt="Sacred heart College"/></a>
         <a href="https://www.baradene.school.nz/"><img src={baradene} alt="Baradene College of the Sacred Heart"/></a>
         <a href="https://selwyn.school.nz/"><img src={selwyn} alt="Selwyn College"/></a>

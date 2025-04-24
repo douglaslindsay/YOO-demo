@@ -24,7 +24,7 @@
     img {
         border-radius: 15px;
         width: 100%;
-        height: 100%;
+        min-height: 100%;
         object-fit: cover;
     }
     .text, h4 {
@@ -53,6 +53,7 @@
         position: relative;
         height: 60vh;
         width: 100%;
+        border-radius: 15px;
     }
     .text{
         width: 25%;
@@ -65,6 +66,9 @@
     .text h3 {
         font-size: 30px;
         margin: 4px;
+        hyphens: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .picture h4 {
         font-size : 30px;
@@ -118,6 +122,19 @@
     }
     .text h4 {
         margin-top: 4px;
+    }
+    @media screen and (max-width: 900px){
+        .wrapper {
+            flex-direction: column;
+            gap: 30px;
+        }
+        .text {
+            width: inherit;
+            order: 1!important;
+        }
+        .picture {
+            overflow: hidden;
+        }
     }
 </style>
 

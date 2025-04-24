@@ -8,6 +8,7 @@
     .person {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
     .role {
         background-color: green;
@@ -26,6 +27,12 @@
         font-family: Arial, sans-serif;
         margin: 2px;
         color: var(--text-dark);
+    }
+    @media screen and (max-width: 700px){
+        img {
+            width: 100px; /* maybe make them scale to the size of the box in future - just a nice-to-have */
+            height: 100px;
+        }
     }
 </style>
 

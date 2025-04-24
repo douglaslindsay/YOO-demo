@@ -8,7 +8,7 @@
         padding-left: 15%;
         padding-right: 15%;
         background-image: url('/YOO_index-hero-bg-2.svg');
-        padding-top: 10vh;
+        padding-top: 100px;
         padding-bottom: 10vh;
         display: flex;
         align-items: center;
@@ -56,6 +56,7 @@
     }
     textarea {
         height: 150px;
+        resize: vertical;
     }
     input, textarea {
         border: 1px solid rgb(200,200,200);
@@ -76,6 +77,26 @@
         width: 50%; 
         height: 50%; 
         object-fit: contain; 
+    }
+    @media screen and (max-width: 1200px){
+        .block{
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+    }
+    @media screen and (max-width: 1000px){
+        img {
+            display: none;
+        }
+        .left {
+            width: 100%;
+        }
+        form{
+            width: auto;
+        }
+        .block {
+            justify-content: center;
+        }
     }
 </style>
 

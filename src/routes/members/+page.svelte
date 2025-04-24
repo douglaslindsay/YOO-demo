@@ -168,6 +168,7 @@
         padding-left: 5%;
         padding-right: 5%;
         padding-bottom: 50px;
+        padding-top: 40px;
     }
     .card {
         background-color: red;
@@ -233,6 +234,16 @@
     }
     label.selected, label:hover {
         background-color: var(--YOO-red-primary);
+    }
+    @media screen and (max-width: 1000px){
+        .card {
+            flex-direction: column;
+        }
+        .col {
+            width: inherit !important; /* this is probably a bad idea, work out how to get rid of it */
+            margin-bottom: 20px;
+        }
+        .people+.col{order:-1;}
     }
 </style>
 

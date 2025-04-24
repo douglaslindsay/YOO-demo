@@ -35,7 +35,7 @@
         padding-left: 5%;
         padding-right: 5%;
         background-color: var(--YOO-green-lightest);
-        padding-top: 10vh;
+        padding-top: 15vh;
         padding-bottom: 2%;
         height: 70vh;
     }

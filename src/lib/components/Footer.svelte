@@ -9,6 +9,9 @@
 <style>
     .footer > nav > a {
         color: black;
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
     }
     .footer {
         display: flex;
@@ -18,6 +21,12 @@
         align-items: center;
         border-top: 3px solid rgba(139, 193, 139, 0.5);
         height: 120px;
+    }
+    @media screen and (max-width: 900px){
+        .footer {
+            flex-direction: column;
+            gap: 20px;
+        }
     }
     p {
         margin-top: 4px;
@@ -46,7 +55,12 @@
     
     nav {
         display: flex;
-        gap: 50px;
+        justify-content: space-between;
+    }
+    @media screen and (max-width:460px){
+        nav {
+            display: none;
+        }
     }
     .socials > p {
         color: var(--YOO-green-primary);
@@ -65,6 +79,7 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        text-align: center;
     }
     a:hover {
         color: var(--text-active)!important;
