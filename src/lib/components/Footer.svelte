@@ -28,12 +28,6 @@
             gap: 20px;
         }
     }
-    p {
-        margin-top: 4px;
-        margin-bottom: 0px;
-        color: #4e4e4e;
-        font-family: Arial, sans-serif;
-    }
     .footer img {
         height: 90px;
     }
@@ -51,7 +45,7 @@
     img {
         height: 90px;
     }
-    .logo a { font-size: 23px; }
+    .logo > .email > a { font-size: 23px; }
     
     nav {
         display: flex;
@@ -84,6 +78,15 @@
     a:hover {
         color: var(--text-active)!important;
     }
+    p {
+        margin-top: 4px;
+        margin-bottom: 0px;
+        font-family: Arial, sans-serif;
+    }
+    p > a {
+        color: #4e4e4e;
+        font-weight: normal;
+    }
 </style>
 
 <div class="footer">
@@ -91,7 +94,7 @@
         <img src={logo} alt="Logo"/>
         <div class="email">
             <a href="/">Youth of Ōrākei</a>
-            <p>youthoforakei@gmail.com</p>
+            <p><a href="mailto:youthoforakei@gmail.com">youthoforakei@gmail.com</a></p>
         </div>
     </div>
 
