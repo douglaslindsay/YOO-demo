@@ -20,3 +20,12 @@ npm run build
 ```
 
 You can preview the production build with `npm run preview`.
+
+## Tasks
+- [x] Make frontend
+- [x] Make frontend responsive
+- [ ] Add integration with Notion CMS
+- [ ] Make contact form functional
+- [ ] Optimise site (particularly regarding reducing image size i.e. png/webp -> AVIF)
+- [ ] Add SEO
+- [ ] Lighthouse scores
