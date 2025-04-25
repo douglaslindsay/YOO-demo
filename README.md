@@ -29,3 +29,4 @@ You can preview the production build with `npm run preview`.
 - [ ] Optimise site (particularly regarding reducing image size i.e. png/webp -> AVIF)
 - [ ] Add SEO
 - [ ] Lighthouse scores
+- [ ] Fix bugs
