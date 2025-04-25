@@ -16,6 +16,7 @@
         text-align: center;
         margin-top: 10px;
         background-color: var(--secondary);
+        padding: 5px;
     }
     img {
         border-radius: 50%;

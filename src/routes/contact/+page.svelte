@@ -57,6 +57,7 @@
     textarea {
         height: 150px;
         resize: vertical;
+        margin-bottom: 40px;
     }
     input, textarea {
         border: 1px solid rgb(200,200,200);
@@ -117,6 +118,9 @@
 
             <label for="message">Message</label>
             <textarea id="message" name="Message" required=""></textarea>
+
+            <div class="h-captcha" data-sitekey="24ac9e2e-d24c-4482-8714-3518a5ac3106"></div>
+            <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
             <button type="submit">Submit</button>
         </form>

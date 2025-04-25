@@ -11,6 +11,8 @@ npm run dev
 npm run dev -- --open
 ```
 
+If you additionally want to test hCaptcha functionality, you must put the secret key in `.env`.
+
 ## Building
 
 To create a production version of the app:
@@ -26,6 +28,7 @@ You can preview the production build with `npm run preview`.
 - [x] Make frontend responsive
 - [ ] Add integration with Notion CMS
 - [ ] Make contact form functional
+    - [ ] Add hCaptcha
 - [ ] Optimise site (particularly regarding reducing image size i.e. png/webp -> AVIF)
 - [ ] Add SEO
 - [ ] Lighthouse scores
