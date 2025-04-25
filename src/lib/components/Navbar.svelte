@@ -85,6 +85,7 @@
         position: fixed;
         top: 90px;
         width: 100%;
+        z-index: 999;
     }
     .wrapper > nav {
         flex-direction: column;
