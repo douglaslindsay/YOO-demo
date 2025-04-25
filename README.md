@@ -13,12 +13,10 @@ npm run dev -- --open
 
 If you want to test the hCaptcha, put the hCaptcha secret key in `.env`.
 
-If you want to test Google Sheets integration,
+If you want to test Google Sheets integration (this is an involved process.),
 1. Create a Google Cloud Workspace project
 2. Create a service account project
 3. Generate keys for it, then put `CLIENT_EMAIL`, `PRIVATE_KEY`, `SHEET_NAME`, and `SPREADSHEET_ID` in `.env`.
-This is an involved process.
-
 
 ## Building
 
