@@ -1,6 +1,7 @@
 <script>
     import '$lib/styles/global.css';
     import beach from '$lib/assets/Beach Clean-up.webp';
+    import council from '$lib/assets/Whole Council.webp';
 
     import ayv from '$lib/assets/aucklandYouthVoice.png';
     import orakei from '$lib/assets/orakeiLocalBoard.png';
@@ -64,9 +65,11 @@
     .hero > p {
         color: var(--YOO-green-primary);
         padding-bottom: 20%;
-        width: 80vh;
+        width: min(80vh, 80vw);
     }
-    .council { background-image: url('/Whole Council.webp'); }
+    .council img {
+        width: 100%;
+    }
     .about {
         background-image: url('/YOO_index-hero-bg-2.svg');
         display: flex;
@@ -187,6 +190,11 @@
         padding-bottom: 2%;
         height: 70vh;
     }
+    .council {
+        padding: 0;
+        height: fit-content;
+        margin-bottom: -1vh;
+    }
 </style>
 
 <title>Youth of Ōrākei | Home</title>
@@ -196,7 +204,9 @@
     <h2>Inspiring. Representing. Connecting.</h2>
     <p>We are the Youth of Ōrākei, the local youth council for the Ōrākei ward. We are 100% volunteer-led, comprised of 27 young leaders (aged 16-19) determined to make a positive impact in our community.</p>
 </div>
-<div class="block council"></div>
+<div class="council" style="min-height: 0.1!important;">
+    <img src={council} alt="The whole council"/>
+</div>
 <div class="block about">
     <div class="left">
         <h2>About us</h2>

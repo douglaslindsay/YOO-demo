@@ -24,7 +24,7 @@
     nav {
         display: flex;
         flex-grow: 2;
-        justify-content: center;
+        justify-content: flex-end;
     }
 
     .logo a { font-size: 23px; }
