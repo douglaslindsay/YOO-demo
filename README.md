@@ -11,7 +11,14 @@ npm run dev
 npm run dev -- --open
 ```
 
-If you additionally want to test hCaptcha functionality, you must put the secret key in `.env`.
+If you want to test the hCaptcha, put the hCaptcha secret key in `.env`.
+
+If you want to test Google Sheets integration,
+1. Create a Google Cloud Workspace project
+2. Create a service account project
+3. Generate keys for it, then put `CLIENT_EMAIL`, `PRIVATE_KEY`, `SHEET_NAME`, and `SPREADSHEET_ID` in `.env`.
+This is an involved process.
+
 
 ## Building
 
@@ -27,7 +34,7 @@ You can preview the production build with `npm run preview`.
 - [x] Make frontend
 - [x] Make frontend responsive
 - [ ] Add integration with Notion CMS
-- [ ] Make contact form functional
+- [x] Make contact form functional
     - [x] Add hCaptcha
 - [ ] Optimise site (particularly regarding reducing image size i.e. png/webp -> AVIF)
 - [ ] Add SEO

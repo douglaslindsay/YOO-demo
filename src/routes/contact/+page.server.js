@@ -1,4 +1,15 @@
-import { HCAPTCHA_SECRET } from '$env/static/private';
+import { google } from 'googleapis';
+
+import { HCAPTCHA_SECRET, CLIENT_EMAIL, PRIVATE_KEY, SPREADSHEET_ID, SHEET_NAME } from '$env/static/private';
+
+const auth = new google.auth.JWT(
+    CLIENT_EMAIL,
+    null,
+    PRIVATE_KEY.replace(/\\n/g, '\n'),
+    ['https://www.googleapis.com/auth/spreadsheets']
+  );
+
+const sheets = google.sheets({ version: 'v4', auth: auth });
 
 export const actions = {
 	default: async (event) => {
@@ -22,9 +33,21 @@ export const actions = {
               })
         });
         const response_data = await response.json();
-        console.log(response_data);
+        // some error handling here might also be good (and general validation really - check the email contains @, that the fields are nonempty, not too long, etc - and maybe a redirect?)
         if(response_data.success){
-            console.log('Captcha passed and form to be submitted!'); // TODO: change this to submit the actual form via Sheets API
+            console.log("Submitting a response to the Sheets API...");
+            try {
+                await sheets.spreadsheets.values.append({
+                    spreadsheetId: SPREADSHEET_ID,
+                    range: SHEET_NAME,
+                    valueInputOption: 'USER_ENTERED',
+                    resource: {
+                    values: [[name, school, email, message]]
+                    }
+                });
+            } catch (error) {
+                console.error("Error appending data:",error);
+            }
         }
 	}
 };
