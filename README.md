@@ -1,6 +1,6 @@
 # Youth of Ōrākei
 <div align="center">
-  <img src="https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Sveltekit-FF3E00?style=for-the-badge&logo=svelte&logoColor=white"/>
   <img src="https://img.shields.io/badge/NodeJS-aaffaf?style=for-the-badge&logo=nodedotjs"/>
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
   <img src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white"/>
@@ -25,7 +25,7 @@ If you want to test the hCaptcha, put the hCaptcha secret key in `.env`.
 
 If you want to test Google Sheets integration (this is an involved process),
 1. Create a Google Cloud Workspace project
-2. Create a service account project
+2. Create a service account for the project
 3. Generate keys for it, then put `CLIENT_EMAIL`, `PRIVATE_KEY`, `SHEET_NAME`, and `SPREADSHEET_ID` in `.env`.
 
 ## Building
