@@ -17,6 +17,7 @@
 		"vite": "^6.2.5"
 	},
 	"dependencies": {
+		"@notionhq/client": "^2.3.0",
 		"googleapis": "^148.0.0"
 	}
 }

@@ -1,4 +1,7 @@
 <script>
+    export let data;
+    console.log("projects",data);
+
     import Carousel from '$lib/components/Carousel.svelte';
     const images = [
         {

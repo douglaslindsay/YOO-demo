@@ -1,4 +1,7 @@
 <script>
+    export let data;
+    console.log("contact",data);
+
     import stock from '$lib/assets/contact-us-stock-image.png';
 </script>
 

@@ -1,4 +1,7 @@
 <script>
+    export let data;
+    console.log("homepage",data);
+
     import '$lib/styles/global.css';
     import beach from '$lib/assets/Beach Clean-up.webp';
     import council from '$lib/assets/Whole Council.webp';
