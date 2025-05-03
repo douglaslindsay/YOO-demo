@@ -39,8 +39,9 @@
     a {
         text-decoration: none;
         color: var(--YOO-green-primary);
-        font-family: Arial, sans-serif;
-        font-weight: bold;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
         transition: color 500ms;
     }
     

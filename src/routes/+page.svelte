@@ -39,8 +39,17 @@
 </script>
 
 <style>
-    h1,h2,h3,p {
-        font-family: Arial, sans-serif;
+    h1,h2,h3 {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    p {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
     }
     .block {
         min-height: 100vh;
@@ -198,6 +207,7 @@
         height: fit-content;
         margin-bottom: -1vh;
     }
+    .hero { display: none; } /* hide hero page */
 </style>
 
 <title>Youth of Ōrākei | Home</title>

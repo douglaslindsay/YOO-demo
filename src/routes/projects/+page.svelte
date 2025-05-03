@@ -61,7 +61,11 @@
     .upcoming h2:hover {
         transform: rotate(5deg);
     }
-    h2 { font-family: Arial, sans-serif; }
+    h2 {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
 </style>
 
 <title>Youth of Ōrākei | Projects</title>

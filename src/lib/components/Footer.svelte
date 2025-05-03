@@ -12,6 +12,11 @@
         text-align: center;
         margin-left: 10px;
         margin-right: 10px;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
     }
     .footer {
         display: flex;
@@ -34,9 +39,11 @@
     a {
         text-decoration: none;
         color: var(--YOO-green-primary);
-        font-family: Arial, sans-serif;
         font-weight: bold;
         transition: color 500ms;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
     }
     .logo {
         display: flex;
@@ -85,7 +92,11 @@
     }
     p > a {
         color: #4e4e4e;
-        font-weight: normal;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
     }
 </style>
 

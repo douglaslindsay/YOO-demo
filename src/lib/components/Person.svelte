@@ -25,9 +25,20 @@
         object-fit: cover;
     }
     h3, p {
-        font-family: Arial, sans-serif;
         margin: 2px;
         color: var(--text-dark);
+    }
+    h3 {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    p {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
     }
     @media screen and (max-width: 700px){
         img {

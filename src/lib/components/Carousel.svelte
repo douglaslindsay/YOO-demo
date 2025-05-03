@@ -8,6 +8,18 @@
 </script>
 
 <style>
+    h2,h3 {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    p {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+    }
     .carousel {
         display: flex;
         overflow: hidden;
@@ -46,9 +58,6 @@
     }
     .wrapper > button:hover {
         background-color: rgba(0,0,0,0.3);
-    }
-    h2, h3, p{
-        font-family: Arial, sans-serif;
     }
     h2 {
         position: absolute;

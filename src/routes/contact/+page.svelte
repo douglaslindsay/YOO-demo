@@ -36,7 +36,16 @@
         transform: rotate(5deg);
     }
     * {
-        font-family: Arial, sans-serif;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+    }
+    h2 {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
     }
     form {
         display: grid;
@@ -73,6 +82,7 @@
         background-color: #06687b;
         color: white;
         border-radius: 8px;
+        font-size: 1rem;
     }
     .left {
         width: 40%;

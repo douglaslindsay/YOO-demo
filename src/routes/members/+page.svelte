@@ -203,9 +203,17 @@
         row-gap: 30px;
         gap: 20px;
     }
-    h2, p, label {
-        font-family: Arial, sans-serif;
-        color: var(--text-dark);
+    h2 {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    p, label {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
     }
     h2 {
         font-size: 40px;

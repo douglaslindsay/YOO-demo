@@ -46,8 +46,17 @@
         margin: 0;
         padding: 20px;
     }
-    * {
-        font-family: Arial, sans-serif;
+    h3,h4 {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    p {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
     }
     .picture {
         position: relative;
