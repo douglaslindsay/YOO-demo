@@ -95,7 +95,6 @@
 </style>
 
 <title>Youth of Ōrākei | History</title>
-<p>Stuff about history</p>
 
 <div class="block upcoming">
     <h2>Our past projects</h2>
