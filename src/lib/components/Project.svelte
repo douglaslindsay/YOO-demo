@@ -1,5 +1,5 @@
 <script>
-    export let team;
+    export let team="Team name";
     export let name;
     export let date;
     export let description;
@@ -24,7 +24,7 @@
     img {
         border-radius: 15px;
         width: 100%;
-        min-height: 100%;
+        height: 100%;
         object-fit: cover;
     }
     .text, h4 {
@@ -132,7 +132,7 @@
             width: inherit;
             order: 1!important;
         }
-        .picture {
+        .picture, .wrapper {
             overflow: hidden;
         }
     }

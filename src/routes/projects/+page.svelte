@@ -2,8 +2,7 @@
     export let data;
     console.log("projects",data);
 
-    import Carousel from '$lib/components/Carousel.svelte';
-    const images = [
+    const projects = [
         {
             'date' : '2/07/2024',
             'title' : 'YOO meeting',
@@ -12,8 +11,8 @@
         },
         {
             'date' : '27/08/2023',
-            'title' : 'Showcased the artworks of talented youth artists within the Ōrākei community!',
-            'description' : 'Art Gallery',
+            'title' : 'Art Gallery',
+            'description' : 'Showcased the artworks of talented youth artists within the Ōrākei community!',
             'photo' : 'Art Gallery Exhibition.webp'
         },
         {
@@ -34,15 +33,7 @@
         padding-left: 10%;
         padding-right: 10%;
     }
-    .carousel {
-        padding-left: 5%;
-        padding-right: 5%;
-        background-color: var(--YOO-green-lightest);
-        padding-top: 15vh;
-        padding-bottom: 2%;
-        height: 70vh;
-    }
-    .past {
+    .upcoming {
         background-image: url('/YOO_index-hero-bg-2.svg');
         padding-top: 50px;
         height: auto;
@@ -51,7 +42,7 @@
         gap: 50px;
         padding-bottom: 50px;
     }
-    .past > h2 {
+    .upcoming > h2 {
         color: var(--YOO-blue-darkest);
         font-size: 34px;
         margin: 0;
@@ -67,7 +58,7 @@
         transition: transform 300ms;
         margin-top: 50px;
     }
-    .past h2:hover {
+    .upcoming h2:hover {
         transform: rotate(5deg);
     }
     h2 { font-family: Arial, sans-serif; }
@@ -75,79 +66,21 @@
 
 <title>Youth of Ōrākei | Projects</title>
 
-<div class="block carousel">
-    <Carousel title="Upcoming Events" images={images}/>
-</div>
-<div class="block past">
-    <h2>Our past projects</h2>
-    <div style="--primary:var(--YOO-green-lightest); --secondary:var(--YOO-green-light);">
-        <Project
-            team="Team 2"
-            name="Film Festival"
-            date="Saturday, September 21, 12:00 PM"
-            description="Showcased 15 films from aspiring Year 11-13 film-makers on the big screen!"
-            photo="Film Festival 2024.webp"
-            align="right"
-        />
-    </div>
-    <div style="--primary:var(--YOO-red-light); --secondary:var(--YOO-red-primary);">
-        <Project
-            team="Team 3"
-            name="Disability Conference"
-            date="Saturday, August 10, 12:00 PM"
-            description="Encouraged meaningful discussions on ableism, accessibility, and the representation of disability in media."
-            photo="Disability Conference.webp"
-            align="left"
-        />
-    </div>
-    <div style="--primary:var(--YOO-blue-light); --secondary:var(--YOO-blue-primary);">
-        <Project
-            team="Team 4"
-            name="Sustainability Saturday: Tree Planting"
-            date="Monday, June 3, 12:00 PM"
-            description="Attendees planted over 200 trees to support environmental conservation!"
-            photo="Sustainability Saturday.webp"
-            align="right"
-        />
-    </div>
-    <div style="--primary:var(--YOO-green-lightest); --secondary:var(--YOO-green-light);">
-        <Project
-            team="Team 2"
-            name="QuizEx"
-            date="Saturday, May 18, 12:00 PM"
-            description="A fun crossover between Quiz Night and MathEx!"
-            photo="QuizEx.webp"
-            align="left"
-        />
-    </div>
-    <div style="--primary:var(--YOO-red-light); --secondary:var(--YOO-red-primary);">
-        <Project
-            team="Team 5"
-            name="Beach clean up"
-            date="Monday, May 13, 12:00 PM"
-            description="Come join us to clean the local beach and save our environment!"
-            photo="Beach Clean Up.webp"
-            align="right"
-        />
-    </div>
-    <div style="--primary:var(--YOO-blue-light); --secondary:var(--YOO-blue-primary);">
-        <Project
-            team="Team 3"
-            name="Orakei Youth Expo"
-            date="Wednesday, August 30, 12:00 PM"
-            description="Placeholder project description."
-            photo="Youth Expo.webp"
-            align="left"
-        />
-    </div>
-    <div style="--primary:var(--YOO-green-lightest); --secondary:var(--YOO-green-light);">
-        <Project
-            team="Team 1"
-            name="Student Leadership Conference"
-            date="Friday, May 5, 12:00 PM"
-            description="Empowered local high school students with valuable leadership skills!"
-            photo="Student Leadership Conference.webp"
-            align="right"
-        />
-    </div>
+<div class="block upcoming">
+    <h2>Upcoming events</h2>
+    {#each projects as project,i}
+        <div style={[
+            "--primary:var(--YOO-green-lightest); --secondary:var(--YOO-green-light);",
+            "--primary:var(--YOO-red-light); --secondary:var(--YOO-red-primary);",
+            "--primary:var(--YOO-blue-light); --secondary:var(--YOO-blue-primary);"
+        ][i%3]}>
+            <Project
+            name={project.title}
+            date={project.date}
+            description={project.description}
+            photo={project.photo}
+            align={["right","left"][i%2]}
+            />
+        </div>
+    {/each}
 </div>

@@ -1,5 +1,9 @@
-import adapter from '@sveltejs/adapter-static';
+// use adapter-cloudflare in future when deploying to Cloudflare Pages
 
-const config = { kit: { adapter: adapter() } };
+//import adapter from '@sveltejs/adapter-static';
+
+//const config = { kit: { adapter: adapter() } };
+
+const config = {};
 
 export default config;
