@@ -200,7 +200,7 @@
         background-color: var(--YOO-green-lightest);
         padding-top: 2%;
         padding-bottom: 2%;
-        height: 70vh;
+        min-height: 50vh;
     }
     .council {
         padding: 0;
