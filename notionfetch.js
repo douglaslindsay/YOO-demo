@@ -3,15 +3,20 @@ import { Client } from '@notionhq/client';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import fs from 'fs';
+import path from 'path';
 
 dotenv.config();
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
-async function download(url, filename){
+async function download(image, filename, extension = ".webp"){
+    if(Object.hasOwn(image,"name")){
+        extension = path.extname(image.name);
+    }
+    const url = image.file.url;
     const response = await fetch(url);
-    const image = await response.buffer();
-    fs.writeFileSync(`./src/lib/generated/${filename}`, image);
+    const data = await response.buffer();
+    fs.writeFileSync(`./src/lib/generated/${filename}${extension}`, data);
     return filename;
 }
 
@@ -33,14 +38,14 @@ async function homepage(){
     const [,hero,,,whoweare,,whatwedo,,aboutusimage,goals,upcoming_events_db,,organisations_db,schools_db] = homepage.results;
 
     //handle hero image
-    await download(hero.image.file.url, "Whole Council.webp");
+    await download(hero.image, "Whole Council");
 
     //handle who we are text
     homepage_data.whoweare = plaintext(whoweare.paragraph);
     homepage_data.whatwedo = plaintext(whatwedo.paragraph);
 
     //handle about us image
-    await download(aboutusimage.image.file.url, "About Us.webp");
+    await download(aboutusimage.image, "About Us");
 
     //handle goals table (text/text)
     homepage_data.goals = (await notion.databases.query({database_id: goals.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(row => ({
@@ -53,7 +58,7 @@ async function homepage(){
         "Name" : row.Name.title[0].plain_text,
         "Date" : plaintext(row.Date),
         "Description" : plaintext(row.Description),
-        "Image" : await download(row.Image.files[0].file.url,`upcoming_${index}.webp`)
+        "Image" : await download(row.Image.files[0],`upcoming_${index}`)
     }));
     for(let [index,promise] of upcoming.entries()){upcoming[index]=await promise;} // evaluate promises
     homepage_data.upcoming = upcoming;
@@ -62,7 +67,7 @@ async function homepage(){
     let organisations = (await notion.databases.query({database_id: organisations_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
         "Name" : row.Name.title[0].plain_text,
         "URL" : row.URL.url,
-        "Logo" : await download(row.Logo.files[0].file.url,`organisations_${index}.webp`)
+        "Logo" : await download(row.Logo.files[0],`organisations_${index}`)
     }));
     for(let [index,promise] of organisations.entries()){organisations[index]=await promise;} // evaluate promises
     homepage_data.organisations = organisations;
@@ -71,7 +76,7 @@ async function homepage(){
     let schools = (await notion.databases.query({database_id: schools_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
         "Name" : row.Name.title[0].plain_text,
         "URL" : row.URL.url,
-        "Logo" : await download(row.Logo.files[0].file.url,`schools_${index}.webp`)
+        "Logo" : await download(row.Logo.files[0],`schools_${index}`)
     }));
     for(let [index,promise] of schools.entries()){schools[index]=await promise;} // evaluate promises
     homepage_data.schools = schools;
@@ -90,7 +95,7 @@ async function projects(){ // one single text/text/text/text/image block
         "Date" : plaintext(row.Date),
         "Description" : plaintext(row.Description),
         "Team" : plaintext(row.Team),
-        "Image" : await download(row.Image.files[0].file.url,`project_${index}.webp`)
+        "Image" : await download(row.Image.files[0],`project_${index}`)
     }));
     for(let [index,promise] of projects_data.entries()){projects_data[index]=await promise;} // evaluate promises
 
@@ -107,7 +112,7 @@ async function members(){
     let leadership = (await notion.databases.query({database_id: leadership_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
         "Name" : row.Name.title[0].plain_text,
         "Role" : plaintext(row.Role),
-        "Headshot" : await download(row.Headshot.files[0].file.url,`leadership_${index}.webp`)
+        "Headshot" : await download(row.Headshot.files[0],`leadership_${index}`)
     }));
     for(let [index,promise] of leadership.entries()){leadership[index]=await promise;} // evaluate promises
     members_data.leadership = leadership;
@@ -119,7 +124,7 @@ async function members(){
     let comms = (await notion.databases.query({database_id: comms_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
         "Name" : row.Name.title[0].plain_text,
         "Role" : plaintext(row.Role),
-        "Headshot" : await download(row.Headshot.files[0].file.url,`comms_${index}.webp`)
+        "Headshot" : await download(row.Headshot.files[0],`comms_${index}`)
     }));
     for(let [index,promise] of comms.entries()){comms[index]=await promise;} // evaluate promises
     members_data.comms = comms;
@@ -132,7 +137,7 @@ async function members(){
         "Name" : row.Name.title[0].plain_text,
         "Team" : plaintext(row.Team),
         "Role" : plaintext(row.Role),
-        "Headshot" : await download(row.Headshot.files[0].file.url,`members_${index}.webp`)
+        "Headshot" : await download(row.Headshot.files[0],`members_${index}`)
     }));
     for(let [index,promise] of members.entries()){members[index]=await promise;} // evaluate promises
     members_data.members = members;
@@ -141,6 +146,61 @@ async function members(){
     console.log("members downloaded");
 }
 
+async function contact(){
+    const contact = await notion.blocks.children.list({block_id: contact_id});
+    const [,stockphoto] = contact.results;
+
+    // handle stock photo
+    await download(stockphoto.image, "Contact Us Stock Photo");
+
+    console.log("contact downloaded");
+}
+
+async function history(){  // one single text/text/text/text/image block
+    const history = await notion.blocks.children.list({block_id: history_id});
+    const [history_db] = history.results;
+
+    let history_data = (await notion.databases.query({database_id: history_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
+        "Name" : row.Name.title[0].plain_text,
+        "Date" : plaintext(row.Date),
+        "Description" : plaintext(row.Description),
+        "Team" : plaintext(row.Team),
+        "Image" : await download(row.Image.files[0],`history_${index}`)
+    }));
+    for(let [index,promise] of history_data.entries()){history_data[index]=await promise;} // evaluate promises
+
+    fs.writeFileSync("./src/lib/data/history-data.json", JSON.stringify(history_data));
+    console.log("history downloaded");
+}
+
+async function miscellaneous(){
+    const misc = await notion.blocks.children.list({block_id: misc_id});
+    const [,logo,,favicon,,background,socials_db] = misc.results;
+
+    //handle logo
+    await download(logo.image, "logo", ".png");
+
+    //handle favicon
+    await download(favicon.image, "favicon", ".png");
+
+    // handle background
+    await download(background.image, "background", ".svg");
+
+    //handle social media (text/url/image)
+    let socialmedia = (await notion.databases.query({database_id: socials_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
+        "Platform" : row.Platform.title[0].plain_text,
+        "URL" : row.URL.url,
+        "Icon" : await download(row.Icon.files[0],`icon_${index}`)
+    }));
+    for(let [index,promise] of socialmedia.entries()){socialmedia[index]=await promise;} // evaluate promises
+
+    fs.writeFileSync("./src/lib/data/social-media.json", JSON.stringify(socialmedia));
+    console.log("miscellaneous downloaded");
+}
+
 await homepage();
 await projects();
 await members();
+await contact();
+await history();
+await miscellaneous();
