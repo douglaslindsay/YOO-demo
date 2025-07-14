@@ -1,9 +1,9 @@
 <script>
-    export let data;
-    console.log("history", data);
+    import data from '$lib/data/history-data.json';
+
     import Project from '$lib/components/Project.svelte';
 
-    const projects = data.history_data.map(project => ({
+    const projects = data.map(project => ({
         'date' : project.Date,
         'title' : project.Name,
         'description' : project.Description,

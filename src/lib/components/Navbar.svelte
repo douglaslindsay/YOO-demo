@@ -1,5 +1,4 @@
 <script>
-    import logo from '$lib/assets/YOO_Logo_Transparent_Background.png';
     let menu = false;
 </script>
 
@@ -118,7 +117,7 @@
 <div class="wrapper">
     <div class="navbar">
         <div class="logo">
-            <img src={logo} alt="Logo"/>
+            <img src='/generated/logo.png' alt="Logo"/>
             <a href="/">Youth of Ōrākei</a>
         </div>
 

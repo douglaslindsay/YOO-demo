@@ -99,7 +99,7 @@ async function projects(){ // one single text/text/text/text/image block
     }));
     for(let [index,promise] of projects_data.entries()){projects_data[index]=await promise;} // evaluate promises
 
-    fs.writeFileSync("./src/lib/data/projects-data.json", JSON.stringify({projects_data}));
+    fs.writeFileSync("./src/lib/data/projects-data.json", JSON.stringify(projects_data));
     console.log("projects downloaded");
 }
 
@@ -169,7 +169,7 @@ async function history(){  // one single text/text/text/text/image block
     }));
     for(let [index,promise] of history_data.entries()){history_data[index]=await promise;} // evaluate promises
 
-    fs.writeFileSync("./src/lib/data/history-data.json", JSON.stringify({history_data}));
+    fs.writeFileSync("./src/lib/data/history-data.json", JSON.stringify(history_data));
     console.log("history downloaded");
 }
 

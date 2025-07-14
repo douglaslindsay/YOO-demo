@@ -1,17 +1,7 @@
 <script>
-    export let data;
-    console.log("homepage",data);
+    import data from '$lib/data/homepage-data.json';
 
     import '$lib/styles/global.css';
-
-    import ayv from '$lib/assets/aucklandYouthVoice.png';
-    import orakei from '$lib/assets/orakeiLocalBoard.png';
-
-    import shc from '$lib/assets/SHC_Crest-Photoroom.png';
-    import baradene from '$lib/assets/Baradene_crest.png';
-    import selwyn from '$lib/assets/Selwyn_crest.png';
-    import gdc from '$lib/assets/Glendowie_crest.png';
-    import stcuths from '$lib/assets/St_Cuthberts_crest.png';
 
     import Carousel from '$lib/components/Carousel.svelte';
 

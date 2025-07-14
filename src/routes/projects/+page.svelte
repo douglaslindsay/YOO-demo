@@ -1,8 +1,7 @@
 <script>
-    export let data;
-    console.log("projects",data);
+    import data from '$lib/data/projects-data.json';
 
-    const projects = data.projects_data.map(project => ({
+    const projects = data.map(project => ({
         'date' : project.Date,
         'title' : project.Name,
         'description' : project.Description,

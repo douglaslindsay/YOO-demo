@@ -1,6 +1,5 @@
 <script>
-    export let data;
-    console.log("members",data);
+    import data from '$lib/data/members-data.json';
 
     import '$lib/styles/global.css';
     import Person from '$lib/components/Person.svelte';

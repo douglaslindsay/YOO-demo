@@ -1,9 +1,5 @@
 <script>
-    import logo from '$lib/assets/YOO_Logo_Transparent_Background.png';
-    import instagram from '$lib/assets/ig.png';
-    import facebook from '$lib/assets/fb.png';
-    import linkedin from '$lib/assets/in.png';
-    import youtube from '$lib/assets/yt.png';
+    import socials from '$lib/data/social-media.json';
 </script>
 
 <style>
@@ -102,10 +98,10 @@
 
 <div class="footer">
     <div class="logo">
-        <img src={logo} alt="Logo"/>
+        <img src='/generated/logo.png' alt="Logo"/>
         <div class="email">
             <a href="/">Youth of Ōrākei</a>
-            <p><a href="mailto:youthoforakei@gmail.com">youthoforakei@gmail.com</a></p>
+            <p><a href="mailto:youthoforakei@gmail.com">youthoforakei@gmail.com</a></p> <!-- TODO: add to config -->
         </div>
     </div>
 
@@ -119,10 +115,9 @@
     <div class="socials">
         <p>Connect with us</p>
         <div class="icons">
-            <a href="https://www.facebook.com/youthoforakei/"><img src={facebook} alt="Facebook"/></a>
-            <a href="https://www.linkedin.com/company/youth-of-%C5%8Dr%C4%81kei/?originalSubdomain=nz"><img src={linkedin} alt="Linkedin"/></a>
-            <a href="https://www.youtube.com/channel/UCaAQFFboitXtz8H7_2WLAag"><img src={youtube} alt="Youtube"/></a>
-            <a href="https://www.instagram.com/youthoforakei/"><img src={instagram} alt="Instagram"/></a>
+            {#each socials as social}
+                <a href={social.URL}><img src={'/generated/'+social.Icon+'.png'} alt={social.Platform}/></a> <!-- TODO: turn into WEBP -->
+            {/each}
         </div>
     </div>
  </div>
