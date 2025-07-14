@@ -16,7 +16,7 @@ async function download(image, filename, extension = ".webp"){
     const url = image.file.url;
     const response = await fetch(url);
     const data = await response.buffer();
-    fs.writeFileSync(`./src/lib/generated/${filename}${extension}`, data);
+    fs.writeFileSync(`./static/generated/${filename}${extension}`, data);
     return filename;
 }
 
@@ -29,7 +29,7 @@ function plaintext(paragraph){
 
 // fetch the big dashboard and get IDs
 const dashboard = await notion.databases.query({database_id: process.env.DASHBOARD_ID,sorts:[{property:"Name",direction:"ascending"}]});
-const [contact_id, history_id, homepage_id, members_id, misc_id, projects_id] = dashboard.results.map(i => i.id);
+const [contact_id, history_id, homepage_id, members_id, misc_id,, projects_id] = dashboard.results.map(i => i.id);
 
 // fetch homepage
 async function homepage(){
@@ -204,3 +204,4 @@ await members();
 await contact();
 await history();
 await miscellaneous();
+console.log("download complete!");
