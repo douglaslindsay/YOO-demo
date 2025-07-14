@@ -51,7 +51,7 @@
 <style>
     .wrapper {
         height: auto;
-        background-image: url('/YOO_index-hero-bg-2.svg');
+        background-image: url('/generated/background.svg');
         background-size: cover;
         display: flex;
         flex-direction: column;

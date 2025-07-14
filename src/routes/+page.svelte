@@ -3,8 +3,6 @@
     console.log("homepage",data);
 
     import '$lib/styles/global.css';
-    import beach from '$lib/assets/Beach Clean-up.webp';
-    import council from '$lib/assets/Whole Council.webp';
 
     import ayv from '$lib/assets/aucklandYouthVoice.png';
     import orakei from '$lib/assets/orakeiLocalBoard.png';
@@ -16,26 +14,13 @@
     import stcuths from '$lib/assets/St_Cuthberts_crest.png';
 
     import Carousel from '$lib/components/Carousel.svelte';
-    const images = [
-        {
-            'date' : '2 October 2025',
-            'title' : 'Film Festival 2025',
-            'description' : 'Come join us at Berkley Mission Bay',
-            'photo' : 'Film Festival 2025.webp'
-        },
-        {
-            'date' : '2nd August, 12:30 - 3:30PM',
-            'title' : 'Art Gallery Exhibition',
-            'description' : 'Art Gallery!',
-            'photo' : 'Art Gallery Exhibition.webp'
-        },
-        {
-            'date' : '18 May 2024',
-            'title' : 'QuizEx',
-            'description' : 'QuizEx - a fun crossover between Quiz Night and MathEx!',
-            'photo' : 'QuizEx.webp'
-        },
-    ];
+
+    const images = data.upcoming.map(project => ({
+        'date' : project.Date,
+        'title' : project.Name,
+        'description' : project.Description,
+        'photo' : 'generated/'+project.Image+'.webp'
+    }));
 </script>
 
 <style>
@@ -60,7 +45,7 @@
         padding-bottom: 30px;
     }
     .hero {
-        background-image: url('/YOO_index-hero-bg-2.svg');
+        background-image: url('/generated/background.svg');
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -83,7 +68,7 @@
         width: 100%;
     }
     .about {
-        background-image: url('/YOO_index-hero-bg-2.svg');
+        background-image: url('/generated/background.svg');
         display: flex;
         gap: 50px;
         align-items: center;
@@ -135,7 +120,7 @@
         font-size: 19px;
     }
     .goals {
-        background-image: url('/YOO_index-hero-bg-2.svg');
+        background-image: url('/generated/background.svg');
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -212,38 +197,36 @@
 
 <title>Youth of Ōrākei | Home</title>
 
-<div class="block hero">
+<div class="block hero"> <!-- this bit doesn't  actually render -->
     <h1>Youth of Ōrākei</h1>
     <h2>Inspiring. Representing. Connecting.</h2>
     <p>We are the Youth of Ōrākei, the local youth council for the Ōrākei ward. We are 100% volunteer-led, comprised of 27 young leaders (aged 16-19) determined to make a positive impact in our community.</p>
 </div>
 <div class="council" style="min-height: 0.1!important;">
-    <img src={council} alt="The whole council"/>
+    <img src="/generated/Whole Council.webp" alt="The whole council"/>
 </div>
 <div class="block about">
     <div class="left">
         <h2>About us</h2>
         <h3>Who we are</h3>
-        <p>A group of 27 young leaders, aged 16-19, from within the Ōrākei Local Board area that delivers several projects throughout the year to inspire, represent, and connect youth within our diverse community. We are an independent and non-partisan entity that is funded and proudly supported by the Ōrākei Local Board.</p>
+        <p>{data.whoweare}</p>
         <h3>What we do</h3>
-        <p>We not only organise and deliver various projects, but we also equip and engage youth by representing their voice for the future of Ōrākei and wider Auckland through advising and submitting on council policies.</p>
+        <p>{data.whatwedo}</p>
     </div>
-    <img src={beach} alt="Beach clean-up"/>
+    <img src="/generated/About Us.webp" alt="Beach clean-up"/>
 </div>
 <div class="block goals">
     <h2>Our goals</h2>
-    <div class="card" style="background-color:var(--YOO-blue-light);color:var(--YOO-blue-darkest)">
-        <h3>Inspire</h3>
-        <p>We strive to inspire youth to grow, develop, and lead positive change within our community.</p>
-    </div>
-    <div class="card" style="background-color:var(--YOO-green-lightest);color:var(--YOO-green-dark)">
-        <h3>Represent</h3>
-        <p>We strive to represent and amplify youth voices within our community.</p>
-    </div>
-    <div class="card" style="background-color:var(--YOO-red-light);color:var(--YOO-red-dark)">
-        <h3>Connect</h3>
-        <p>We strive to create and strengthen diverse connections within our community.</p>
-    </div>
+    {#each data.goals as goal,i}
+        <div class="card" style={[
+            "background-color:var(--YOO-blue-light);color:var(--YOO-blue-darkest)",
+            "background-color:var(--YOO-green-lightest);color:var(--YOO-green-dark)",
+            "background-color:var(--YOO-red-light);color:var(--YOO-red-dark)"
+        ][i%3]}>
+            <h3>{goal.Name}</h3>
+            <p>{goal.Description}</p>
+        </div>
+    {/each}
 </div>
 <div class="block carousel">
     <Carousel title="Upcoming Events" images={images}/>
@@ -251,14 +234,13 @@
 <div class="block organisations">
     <h2>Organisations and schools we work with:</h2>
     <div>
-        <a href="https://www.ayv.org.nz/"><img src={ayv} alt="Auckland Youth Voice"/></a>
-        <a href="https://www.aucklandcouncil.govt.nz/about-auckland-council/how-auckland-council-works/local-boards/all-local-boards/orakei-local-board/Pages/default.aspx"><img src={orakei} alt="Ōrākei Local Board"/></a>
+        {#each data.organisations as organisation}
+            <a href={organisation.URL}><img src={'/generated/'+organisation.Logo+'.png'} alt={organisation.Name}/></a> <!-- FIXME: convert to PNG -->
+        {/each}
     </div>
     <div style="height:100%;">
-        <a href="https://www.sacredheart.school.nz/"><img src={shc} alt="Sacred heart College"/></a>
-        <a href="https://www.baradene.school.nz/"><img src={baradene} alt="Baradene College of the Sacred Heart"/></a>
-        <a href="https://selwyn.school.nz/"><img src={selwyn} alt="Selwyn College"/></a>
-        <a href="https://www.gdc.school.nz/"><img src={gdc} alt="Glendowie College"/></a>
-        <a href="https://stcuthberts.school.nz/"><img src={stcuths} alt="St Cuthbert's"/></a>
+        {#each data.schools as school}
+            <a href={school.URL}><img src={'/generated/'+school.Logo+'.png'} alt={school.Name}/></a> <!-- FIXME: convert to PNG -->
+        {/each}
     </div>
 </div>

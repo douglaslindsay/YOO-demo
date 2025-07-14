@@ -3,7 +3,7 @@
         background-size: cover;
         padding-left: 15%;
         padding-right: 15%;
-        background-image: url('/YOO_index-hero-bg-2.svg');
+        background-image: url('/generated/background.svg');
         padding-top: 100px;
         padding-bottom: 10vh;
         display: flex;

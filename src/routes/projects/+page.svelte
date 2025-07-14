@@ -21,7 +21,7 @@
         padding-right: 10%;
     }
     .upcoming {
-        background-image: url('/YOO_index-hero-bg-2.svg');
+        background-image: url('/generated/background.svg');
         padding-top: 50px;
         height: auto;
         display: flex;
