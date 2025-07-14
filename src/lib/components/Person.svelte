@@ -49,7 +49,7 @@
 </style>
 
 <div class="person">
-    <img src={'/people/'+photo} alt={name}/> <!--injection?-->
+    <img src={'generated/'+photo} alt={name}/> <!--injection?-->
     <div class="role">
         <h3>{name}</h3>
         <p>{title}</p>

@@ -1,4 +1,6 @@
 import { google } from 'googleapis';
+import fs from 'fs';
+import path from 'path';
 
 import { HCAPTCHA_SECRET, CLIENT_EMAIL, PRIVATE_KEY, SPREADSHEET_ID, SHEET_NAME } from '$env/static/private';
 

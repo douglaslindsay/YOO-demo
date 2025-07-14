@@ -1,10 +1,3 @@
-<script>
-    export let data;
-    console.log("contact",data);
-
-    import stock from '$lib/assets/contact-us-stock-image.png';
-</script>
-
 <style>
     .block {
         background-size: cover;
@@ -138,5 +131,5 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-    <img src={stock} alt="Beach clean-up"/>
+    <img src="/generated/Contact Us Stock Photo.webp" alt="Beach clean-up"/>
 </div>
