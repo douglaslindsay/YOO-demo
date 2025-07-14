@@ -2,26 +2,13 @@
     export let data;
     console.log("projects",data);
 
-    const projects = [
-        {
-            'date' : '2/07/2024',
-            'title' : 'YOO meeting',
-            'description' : 'This is a description about quizzes at YOO. Quizzes are good to learn from.',
-            'photo' : 'cover.webp'
-        },
-        {
-            'date' : '27/08/2023',
-            'title' : 'Art Gallery',
-            'description' : 'Showcased the artworks of talented youth artists within the Ōrākei community!',
-            'photo' : 'Art Gallery Exhibition.webp'
-        },
-        {
-            'date' : '6/08/2023',
-            'title' : 'Quiz Night',
-            'description' : 'This is a description about quizzes at YOO. Quizzes are good to learn from.',
-            'photo' : 'quiz night.webp'
-        },
-    ];
+    const projects = data.projects_data.map(project => ({
+        'date' : project.Date,
+        'title' : project.Name,
+        'description' : project.Description,
+        'team' : project.Team,
+        'photo' : "generated/"+project.Image+".webp"
+    }));
 
     import Project from '$lib/components/Project.svelte';
 </script>

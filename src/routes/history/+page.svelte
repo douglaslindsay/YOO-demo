@@ -3,57 +3,13 @@
     console.log("history", data);
     import Project from '$lib/components/Project.svelte';
 
-    const projects = [
-        {
-            'date' : 'Saturday, September 21, 12:00 PM',
-            'title' : 'Film Festival',
-            'description' : 'Showcased 15 films from aspiring Year 11-13 film-makers on the big screen!',
-            'photo': 'Film Festival 2024.webp',
-            'team' : 'Team 2'
-        },
-        {
-            'date' : 'Saturday, August 10, 12:00 PM',
-            'title' : 'Disability Conference',
-            'description' : 'Encouraged meaningful discussions on ableism, accessibility, and the representation of disability in media.',
-            'photo' : 'Disability Conference.webp',
-            'team' : 'Team 3'
-        },
-        {
-            'date' : 'Monday, June 3, 12:00 PM',
-            'title' : 'Sustainability Saturday: Tree Planting',
-            'description' : 'Attendees planted over 200 trees to support environmental conservation!',
-            'photo' : 'Sustainability Saturday.webp',
-            'team' : 'Team 4'
-        },
-        {
-            'date' : 'Saturday, May 18, 12:00 PM',
-            'title' : 'QuizEx',
-            'description' : 'A fun crossover between Quiz Night and MathEx!',
-            'photo' : 'QuizEx.webp',
-            'team' : 'Team 2'
-        },
-        {
-            'date' : 'Monday, May 13, 12:00 PM',
-            'title' : 'Beach clean up',
-            'description' : 'Come join us to clean the local beach and save our environment!',
-            'photo' : 'Beach Clean Up.webp',
-            'team' : 'Team 5'
-        },
-        {
-            'date' : 'Wednesday, August 30, 12:00 PM',
-            'title' : 'Orakei Youth Expo',
-            'description' : 'Placeholder project description.',
-            'photo' : 'Youth Expo.webp',
-            'team' : 'Team 3'
-        },
-        {
-            'date' : 'Friday, May 5, 12:00 PM',
-            'title' : 'Student Leadership Conference',
-            'description' : 'Empowered local high school students with valuable leadership skills!',
-            'photo' : 'Student Leadership Conference.webp',
-            'team' : 'Team 1'
-        }
-    ];
+    const projects = data.history_data.map(project => ({
+        'date' : project.Date,
+        'title' : project.Name,
+        'description' : project.Description,
+        'team' : project.Team,
+        'photo' : "generated/"+project.Image+".webp"
+    }));
 </script>
 
 <style>

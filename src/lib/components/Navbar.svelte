@@ -40,7 +40,6 @@
         text-decoration: none;
         color: var(--YOO-green-primary);
         font-family: "Archivo Black", sans-serif;
-        font-weight: 400;
         font-style: normal;
         transition: color 500ms;
     }
