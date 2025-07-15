@@ -6,7 +6,7 @@
         'title' : project.Name,
         'description' : project.Description,
         'team' : project.Team,
-        'photo' : "generated/"+project.Image+".webp"
+        'photo' : project.Image+".webp"
     }));
 
     import Project from '$lib/components/Project.svelte';
@@ -20,7 +20,7 @@
         padding-right: 10%;
     }
     .upcoming {
-        background-image: url('/generated/background.svg');
+        background-image: url('/background.svg');
         padding-top: 50px;
         height: auto;
         display: flex;

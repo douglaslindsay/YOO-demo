@@ -3,7 +3,7 @@
         background-size: cover;
         padding-left: 15%;
         padding-right: 15%;
-        background-image: url('/generated/background.svg');
+        background-image: url('/background.svg');
         padding-top: 100px;
         padding-bottom: 10vh;
         display: flex;
@@ -131,5 +131,5 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-    <img src="/generated/Contact Us Stock Photo.webp" alt="Beach clean-up"/>
+    <img src="/Contact Us Stock Photo.webp" alt="Beach clean-up"/>
 </div>

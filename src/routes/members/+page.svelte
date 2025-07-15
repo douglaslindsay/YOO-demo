@@ -7,13 +7,13 @@
     const leadership = data.leadership.map(leader => ({
         name: leader.Name,
         title : leader.Role,
-        photo : 'generated/'+leader.Headshot + ".webp" // this is ensured by the download in notionfetch.js
+        photo : leader.Headshot + ".webp" // this is ensured by the download in notionfetch.js
     }));
 
     const communications = data.leadership.map(comm => ({
         name: comm.Name,
         title : comm.Role,
-        photo : 'generated/'+comm.Headshot + ".webp" // this is ensured by the download in notionfetch.js
+        photo : comm.Headshot + ".webp" // this is ensured by the download in notionfetch.js
     }));
 
     const members = data.members;
@@ -37,7 +37,7 @@
         teams[member.Team].push({
             name : member.Name,
             title : member.Role,
-            photo: 'generated/'+member.Headshot + ".webp"
+            photo: member.Headshot + ".webp"
         })
     }
     
@@ -50,7 +50,7 @@
 <style>
     .wrapper {
         height: auto;
-        background-image: url('/generated/background.svg');
+        background-image: url('/background.svg');
         background-size: cover;
         display: flex;
         flex-direction: column;

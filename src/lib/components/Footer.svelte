@@ -98,7 +98,7 @@
 
 <div class="footer">
     <div class="logo">
-        <img src='/generated/logo.png' alt="Logo"/>
+        <img src='/logo.webp' alt="Logo"/>
         <div class="email">
             <a href="/">Youth of Ōrākei</a>
             <p><a href={"mailto:"+misc.email}>{misc.email}</a></p>
@@ -116,7 +116,7 @@
         <p>Connect with us</p>
         <div class="icons">
             {#each misc.socialmedia as social}
-                <a href={social.URL}><img src={'/generated/'+social.Icon+'.webp'} alt={social.Platform}/></a>
+                <a href={social.URL}><img src={'/'+social.Icon+'.webp'} alt={social.Platform}/></a>
             {/each}
         </div>
     </div>

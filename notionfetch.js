@@ -16,7 +16,7 @@ async function download(image, filename, extension = ".webp"){
     const url = image.file.url;
     const response = await fetch(url);
     const data = await response.buffer();
-    fs.writeFileSync(`./static/generated/${filename}${extension}`, data);
+    fs.writeFileSync(`./static/${filename}${extension}`, data);
     return filename;
 }
 
@@ -178,7 +178,7 @@ async function miscellaneous(){
     const [,logo,,favicon,,background,socials_db,,email] = misc.results;
 
     //handle logo
-    await download(logo.image, "logo", ".png");
+    await download(logo.image, "logo");
 
     //handle favicon
     await download(favicon.image, "favicon", ".png");

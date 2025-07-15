@@ -9,7 +9,7 @@
         'date' : project.Date,
         'title' : project.Name,
         'description' : project.Description,
-        'photo' : 'generated/'+project.Image+'.webp'
+        'photo' : project.Image+'.webp'
     }));
 </script>
 
@@ -35,7 +35,7 @@
         padding-bottom: 30px;
     }
     .hero {
-        background-image: url('/generated/background.svg');
+        background-image: url('/background.svg');
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -58,7 +58,7 @@
         width: 100%;
     }
     .about {
-        background-image: url('/generated/background.svg');
+        background-image: url('/background.svg');
         display: flex;
         gap: 50px;
         align-items: center;
@@ -110,7 +110,7 @@
         font-size: 19px;
     }
     .goals {
-        background-image: url('/generated/background.svg');
+        background-image: url('/background.svg');
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -193,7 +193,7 @@
     <p>We are the Youth of Ōrākei, the local youth council for the Ōrākei ward. We are 100% volunteer-led, comprised of 27 young leaders (aged 16-19) determined to make a positive impact in our community.</p>
 </div>
 <div class="council" style="min-height: 0.1!important;">
-    <img src="/generated/Whole Council.webp" alt="The whole council"/>
+    <img src="/Whole Council.webp" alt="The whole council"/>
 </div>
 <div class="block about">
     <div class="left">
@@ -203,7 +203,7 @@
         <h3>What we do</h3>
         <p>{data.whatwedo}</p>
     </div>
-    <img src="/generated/About Us.webp" alt="Beach clean-up"/>
+    <img src="/About Us.webp" alt="Beach clean-up"/>
 </div>
 <div class="block goals">
     <h2>Our goals</h2>
@@ -225,12 +225,12 @@
     <h2>Organisations and schools we work with:</h2>
     <div>
         {#each data.organisations as organisation}
-            <a href={organisation.URL}><img src={'/generated/'+organisation.Logo+'.png'} alt={organisation.Name}/></a> <!-- FIXME: convert to PNG -->
+            <a href={organisation.URL}><img src={'/'+organisation.Logo+'.webp'} alt={organisation.Name}/></a> <!-- FIXME: convert to PNG -->
         {/each}
     </div>
     <div style="height:100%;">
         {#each data.schools as school}
-            <a href={school.URL}><img src={'/generated/'+school.Logo+'.png'} alt={school.Name}/></a> <!-- FIXME: convert to PNG -->
+            <a href={school.URL}><img src={'/'+school.Logo+'.webp'} alt={school.Name}/></a> <!-- FIXME: convert to PNG -->
         {/each}
     </div>
 </div>
