@@ -1,5 +1,5 @@
 <script>
-    import socials from '$lib/data/social-media.json';
+    import misc from '$lib/data/miscellaneous.json';
 </script>
 
 <style>
@@ -101,7 +101,7 @@
         <img src='/generated/logo.png' alt="Logo"/>
         <div class="email">
             <a href="/">Youth of Ōrākei</a>
-            <p><a href="mailto:youthoforakei@gmail.com">youthoforakei@gmail.com</a></p> <!-- TODO: add to config -->
+            <p><a href={"mailto:"+misc.email}>{misc.email}</a></p>
         </div>
     </div>
 
@@ -115,8 +115,8 @@
     <div class="socials">
         <p>Connect with us</p>
         <div class="icons">
-            {#each socials as social}
-                <a href={social.URL}><img src={'/generated/'+social.Icon+'.png'} alt={social.Platform}/></a> <!-- TODO: turn into WEBP -->
+            {#each misc.socialmedia as social}
+                <a href={social.URL}><img src={'/generated/'+social.Icon+'.webp'} alt={social.Platform}/></a>
             {/each}
         </div>
     </div>

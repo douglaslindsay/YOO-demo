@@ -175,7 +175,7 @@ async function history(){  // one single text/text/text/text/image block
 
 async function miscellaneous(){
     const misc = await notion.blocks.children.list({block_id: misc_id});
-    const [,logo,,favicon,,background,socials_db] = misc.results;
+    const [,logo,,favicon,,background,socials_db,,email] = misc.results;
 
     //handle logo
     await download(logo.image, "logo", ".png");
@@ -194,7 +194,14 @@ async function miscellaneous(){
     }));
     for(let [index,promise] of socialmedia.entries()){socialmedia[index]=await promise;} // evaluate promises
 
-    fs.writeFileSync("./src/lib/data/social-media.json", JSON.stringify(socialmedia));
+    const address = plaintext(email.paragraph);
+
+    const data = {
+        'socialmedia' : socialmedia,
+        'email' : address
+    }
+
+    fs.writeFileSync("./src/lib/data/miscellaneous.json", JSON.stringify(data));
     console.log("miscellaneous downloaded");
 }
 
