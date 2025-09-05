@@ -4,16 +4,18 @@
     import '$lib/styles/global.css';
     import Person from '$lib/components/Person.svelte';
 
+    import fixed_images from '$lib/data/fixed_images.json';
+
     const leadership = data.leadership.map(leader => ({
         name: leader.Name,
         title : leader.Role,
-        photo : leader.Headshot + ".webp" // this is ensured by the download in notionfetch.js
+        photo : leader.Headshot // this is ensured by the download in notionfetch.js
     }));
 
     const communications = data.leadership.map(comm => ({
         name: comm.Name,
         title : comm.Role,
-        photo : comm.Headshot + ".webp" // this is ensured by the download in notionfetch.js
+        photo : comm.Headshot // this is ensured by the download in notionfetch.js
     }));
 
     const members = data.members;
@@ -37,7 +39,7 @@
         teams[member.Team].push({
             name : member.Name,
             title : member.Role,
-            photo: member.Headshot + ".webp"
+            photo: member.Headshot
         })
     }
     
@@ -50,7 +52,6 @@
 <style>
     .wrapper {
         height: auto;
-        background-image: url('/background.svg');
         background-size: cover;
         display: flex;
         flex-direction: column;
@@ -147,7 +148,7 @@
 
 <title>Youth of Ōrākei | Members</title>
 
-<div class="wrapper">
+<div class="wrapper" style={`background-image: url(${fixed_images.background})`}>
     <div class="card" style="background-color:var(--YOO-blue-primary); --secondary:var(--YOO-blue-light)">
         <div class="col">
             <b><h2>Leadership Team</h2></b>

@@ -1,5 +1,6 @@
 <script>
     let menu = false;
+    import fixed_images from '$lib/data/fixed_images.json';
 </script>
 
 <style>
@@ -117,7 +118,7 @@
 <div class="wrapper">
     <div class="navbar">
         <div class="logo">
-            <img src='/logo.webp' alt="Logo"/>
+            <img src={'/'+fixed_images.logo} alt="Logo"/>
             <a href="/">Youth of Ōrākei</a>
         </div>
 

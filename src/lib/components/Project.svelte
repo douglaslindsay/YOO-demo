@@ -149,7 +149,7 @@
 
 <div class="wrapper">
     <div class="picture">
-        <img src={'/'+photo} alt={name}/>
+        <img src={'/'+photo} alt={name}/> <!-- FIXME: add a case for when no team is associated (team is blank )-->
         {#if align=="left"}
             <h4 class="left">{team}</h4>
         {:else if align=="right"}
@@ -159,6 +159,6 @@
     <div class="text" style={"order:"+order+";"}>
         <h3>{name}</h3>
         <h4>{date}</h4>
-        <p>{description}</p>
+        <p>{@html description}</p>
     </div>
 </div>

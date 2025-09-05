@@ -1,5 +1,6 @@
 <script>
     import misc from '$lib/data/miscellaneous.json';
+    import fixed_images from '$lib/data/fixed_images.json';
 </script>
 
 <style>
@@ -98,10 +99,10 @@
 
 <div class="footer">
     <div class="logo">
-        <img src='/logo.webp' alt="Logo"/>
+        <img src={'/'+fixed_images.logo} alt="Logo"/>
         <div class="email">
             <a href="/">Youth of Ōrākei</a>
-            <p><a href={"mailto:"+misc.email}>{misc.email}</a></p>
+            <p><a href={"mailto:"+misc.email}>{misc.email}</a></p> <!-- FIXME: this displays wrong -->
         </div>
     </div>
 
@@ -116,7 +117,7 @@
         <p>Connect with us</p>
         <div class="icons">
             {#each misc.socialmedia as social}
-                <a href={social.URL}><img src={'/'+social.Icon+'.webp'} alt={social.Platform}/></a>
+                <a href={social.URL}><img src={'/'+social.Icon} alt={social.Platform}/></a>
             {/each}
         </div>
     </div>

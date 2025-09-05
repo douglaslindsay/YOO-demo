@@ -1,9 +1,12 @@
+<script>
+    import fixed_images from '$lib/data/fixed_images.json';
+</script>
+
 <style>
     .block {
         background-size: cover;
         padding-left: 15%;
         padding-right: 15%;
-        background-image: url('/background.svg');
         padding-top: 100px;
         padding-bottom: 10vh;
         display: flex;
@@ -109,7 +112,7 @@
 
 <title>Youth of Ōrākei | Contact</title>
 
-<div class="block">
+<div class="block" style={`background-image: url(${fixed_images.background})`}>
     <div class="left">
         <h2>Contact us</h2>
         <form method="POST">
@@ -131,5 +134,5 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-    <img src="/Contact Us Stock Photo.webp" alt="Beach clean-up"/>
+    <img src={'/'+fixed_images.stockphoto} alt="YOO Logo"/>
 </div>

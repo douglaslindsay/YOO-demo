@@ -9,22 +9,46 @@ dotenv.config();
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
-async function download(image, filename, extension = ".webp"){
-    if(Object.hasOwn(image,"name")){
-        extension = path.extname(image.name);
+let fixed_images = { // stores the file paths of hero images that are fixed and not in a database, including their extensions
+
+};
+
+
+async function download(image, filename, extension = ".INVALID", debug = false){
+    // there are actually two types of image object in Notion's API, one for block images and one for file properties
+    // currently this function only supports the latter
+    // this happens when I pass in the .image attribute, but in the meantime I need to add a check for getting it
+    if(debug){
+        console.log(image);
+        return filename;
+    }
+
+    if(Object.hasOwn(image,"name")){ // automatically determine extension if possible
+        // otherwise uses provided one (no way to get it from block images)
+        extension = path.extname(image.name); // we need more advanced logic for finding the extension
+        //console.log("Successfully found extension.");
+    } else {
+        //console.log(image);
     }
     const url = image.file.url;
     const response = await fetch(url);
     const data = await response.buffer();
-    fs.writeFileSync(`./static/${filename}${extension}`, data);
-    return filename;
+    const fullname = `${filename}${extension}`;
+    fs.writeFileSync(`./static/${fullname}`, data);
+    return fullname;
 }
 
 function plaintext(paragraph){
-    if(paragraph.rich_text.length){
-        return paragraph.rich_text[0].plain_text;
+    let rval = "";
+    for(const part of paragraph.rich_text){
+        rval += part.plain_text.replace(/\n/g, "<br>");
     }
-    return "";
+    return rval;
+}
+
+function blockImageExtension(block){
+    // this is a block image, not a database file entry
+    return '.'+block.image.file.url.split('.').pop().split('?')[0];
 }
 
 // fetch the big dashboard and get IDs
@@ -38,14 +62,14 @@ async function homepage(){
     const [,hero,,,whoweare,,whatwedo,,aboutusimage,goals,upcoming_events_db,,organisations_db,schools_db] = homepage.results;
 
     //handle hero image
-    await download(hero.image, "Whole Council");
+    fixed_images.hero = await download(hero.image, "Whole Council", blockImageExtension(hero)); // FIXME: needs to be included in output data
 
     //handle who we are text
     homepage_data.whoweare = plaintext(whoweare.paragraph);
     homepage_data.whatwedo = plaintext(whatwedo.paragraph);
 
     //handle about us image
-    await download(aboutusimage.image, "About Us");
+    fixed_images.aboutusimage = await download(aboutusimage.image, "About Us", blockImageExtension(aboutusimage)); // FIXME: needs to be included in output data
 
     //handle goals table (text/text)
     homepage_data.goals = (await notion.databases.query({database_id: goals.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(row => ({
@@ -88,7 +112,7 @@ async function homepage(){
 // fetch projects
 async function projects(){ // one single text/text/text/text/image block
     const projects = await notion.blocks.children.list({block_id: projects_id});
-    const [projects_db] = projects.results;
+    const [,projects_db] = projects.results;
 
     let projects_data = (await notion.databases.query({database_id: projects_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
         "Name" : row.Name.title[0].plain_text,
@@ -151,14 +175,14 @@ async function contact(){
     const [,stockphoto] = contact.results;
 
     // handle stock photo
-    await download(stockphoto.image, "Contact Us Stock Photo");
+    fixed_images.stockphoto = await download(stockphoto.image, "Contact Us Stock Photo", blockImageExtension(stockphoto)); // FIXME: needs to be included in output data
 
     console.log("contact downloaded");
 }
 
 async function history(){  // one single text/text/text/text/image block
     const history = await notion.blocks.children.list({block_id: history_id});
-    const [history_db] = history.results;
+    const [,history_db] = history.results;
 
     let history_data = (await notion.databases.query({database_id: history_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
         "Name" : row.Name.title[0].plain_text,
@@ -178,13 +202,13 @@ async function miscellaneous(){
     const [,logo,,favicon,,background,socials_db,,email] = misc.results;
 
     //handle logo
-    await download(logo.image, "logo");
+    fixed_images.logo = await download(logo.image, "logo", blockImageExtension(logo)); // FIXME: needs to be included in output data
 
     //handle favicon
-    await download(favicon.image, "favicon", ".png");
+    fixed_images.favicon = await download(favicon.image, "favicon", blockImageExtension(favicon)); // FIXME: needs to be included in output data
 
     // handle background
-    await download(background.image, "background", ".svg");
+    fixed_images.background = await download(background.image, "background", blockImageExtension(background)); // FIXME: needs to be included in output data
 
     //handle social media (text/url/image)
     let socialmedia = (await notion.databases.query({database_id: socials_db.id,sorts:[{property:"Order",direction:"ascending"}]})).results.map(row => row.properties).map(async(row, index) => ({ // create promises
@@ -211,4 +235,7 @@ await members();
 await contact();
 await history();
 await miscellaneous();
+
+fs.writeFileSync("./src/lib/data/fixed_images.json", JSON.stringify(fixed_images)); // write fixed images file
+
 console.log("download complete!");

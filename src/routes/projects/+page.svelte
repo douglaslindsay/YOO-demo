@@ -6,10 +6,12 @@
         'title' : project.Name,
         'description' : project.Description,
         'team' : project.Team,
-        'photo' : project.Image+".webp"
+        'photo' : project.Image
     }));
 
     import Project from '$lib/components/Project.svelte';
+
+    import fixed_images from '$lib/data/fixed_images.json';
 </script>
 
 <style>
@@ -20,7 +22,6 @@
         padding-right: 10%;
     }
     .upcoming {
-        background-image: url('/background.svg');
         padding-top: 50px;
         height: auto;
         display: flex;
@@ -56,7 +57,7 @@
 
 <title>Youth of Ōrākei | Projects</title>
 
-<div class="block upcoming">
+<div class="block upcoming" style={`background-image: url(${fixed_images.background})`}>
     <h2>Upcoming events</h2>
     {#each projects as project,i}
         <div style={[
