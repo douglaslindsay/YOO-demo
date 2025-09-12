@@ -14,9 +14,9 @@ if (process.env.NODE_ENV !== 'production') {
   console.log("Dotenv was imported and then configured!");
 }
 if(process.env.NOTION_TOKEN){
-    console.log("notion token length", process.env.NOTION_TOKEN.length)
+    console.log("notion token length", process.env.NOTION_TOKEN.length);
 } else {
-    console.log("notion token not found")
+    console.log("notion token not found");
 }
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
