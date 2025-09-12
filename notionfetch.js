@@ -1,11 +1,12 @@
 // everything in here is hardcoded. this is bad practice but it doesn't matter since it's never changing and the token is never exposed.
 import { Client } from '@notionhq/client';
-import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
 
-dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
+  import('dotenv').then(dotenv => dotenv.config());
+}
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
