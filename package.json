@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"prebuild": "node notionfetch.js",
-		"build": "npm run prebuild && vite build",
+		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''"
 	},
