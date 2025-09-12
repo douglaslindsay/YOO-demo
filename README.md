@@ -53,6 +53,6 @@ You can preview the production build with `npm run preview`.
 ## Licensing notes
 Lucide Icons © Lucide Contributors
 
-Licensed under the ISC License
+Licensed under the ISC License:
 
 https://github.com/lucide-icons/lucide
