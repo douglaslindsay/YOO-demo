@@ -4,8 +4,16 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
 
+console.log("node env:");
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV !== 'production') {
   import('dotenv').then(dotenv => dotenv.config());
+  console.log("Dotenv was imported and then configured!");
+}
+if(process.env.NOTION_TOKEN){
+    console.log("notion token length", process.env.NOTION_TOKEN.length)
+} else {
+    console.log("notion token not found")
 }
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
