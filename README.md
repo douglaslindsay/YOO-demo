@@ -42,7 +42,7 @@ You can preview the production build with `npm run preview`.
 ## Tasks
 - [x] Make frontend
 - [x] Make frontend responsive
-- [ ] Add integration with Notion CMS
+- [x] Add integration with Notion CMS
 - [x] Make contact form functional
     - [x] Add hCaptcha
 - [ ] Optimise site (particularly regarding reducing image size i.e. png/webp -> AVIF)
