@@ -5,8 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"vitebuild" : "vite build",
-		"build": "node notionfetch.js && npm run vitebuild",
+		"build": "node notionfetch.js && npx vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''"
 	},
