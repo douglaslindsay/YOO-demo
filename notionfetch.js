@@ -1,3 +1,8 @@
+// debugging stuff
+console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("NOTION_TOKEN exists:", !!process.env.NOTION_TOKEN);
+console.log("NOTION_TOKEN length:", process.env.NOTION_TOKEN?.length);
+
 // everything in here is hardcoded. this is bad practice but it doesn't matter since it's never changing and the token is never exposed.
 import { Client } from '@notionhq/client';
 import fetch from 'node-fetch';
