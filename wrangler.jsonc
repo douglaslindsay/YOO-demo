@@ -6,5 +6,12 @@
   "assets": {
     "directory": ".svelte-kit/cloudflare",
     "binding": "ASSETS"
-  }
+  },
+  "routes": [
+    {
+      "pattern": "youthoforakei.org.nz/*",
+      "zone_name": "youthoforakei.org.nz",
+      "override_existing_dns_record": true
+    }
+  ]
 }
