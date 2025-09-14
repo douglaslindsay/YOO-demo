@@ -10,6 +10,7 @@
   "routes": [
     {
       "pattern": "youthoforakei.org.nz/*",
+      "custom_domain": true,
       "zone_name": "youthoforakei.org.nz",
       "override_existing_dns_record": true
     }
