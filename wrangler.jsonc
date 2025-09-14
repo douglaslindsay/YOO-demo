@@ -9,7 +9,7 @@
   },
   "routes": [
     {
-      "pattern": "youthoforakei.org.nz/*",
+      "pattern": "youthoforakei.org.nz",
       "custom_domain": true,
       "zone_name": "youthoforakei.org.nz"
     }
