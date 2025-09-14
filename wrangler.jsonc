@@ -11,7 +11,7 @@
     {
       "pattern": "youthoforakei.org.nz/*",
       "custom_domain": true,
-      "zone_name": "youthoforakei.org.nz",
+      "zone_name": "youthoforakei.org.nz"
     }
   ]
 }
