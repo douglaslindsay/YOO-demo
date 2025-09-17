@@ -23,16 +23,14 @@
     .carousel {
         display: flex;
         overflow: hidden;
-        width: 80%;
+        width: 60%;
         height: 100%;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        border-top-right-radius: 15px;
     }
     img {
         height: 60vh;
         width: 100%;
         object-fit: cover;
+        border-radius: 15px;
     }
     .wrapper {
         height: 100%;
@@ -49,56 +47,36 @@
         background-color: transparent;
     }
     .wrapper > button.left{
-        left: 0;
+        left: 10%;
         border-top-left-radius: 15px;
         border-bottom-left-radius: 15px;
     }
     .wrapper > button.right{
-        right: 0;
+        right: 10%;
         border-top-right-radius: 15px;
         border-bottom-right-radius: 15px;
+    }
+    @media screen and (max-width: 500px){
+        .wrapper > button.left{
+            right: 0;
+        }
+        .wrapper > button.right{
+            left: 0;
+        }
+        .carousel {
+            width: 90%;
+        }
     }
     .wrapper > button:hover {
         background-color: rgba(0,0,0,0.3);
     }
     h2 {
-        position: absolute;
-        left: 0;
-        top: 0;
         background-color: var(--YOO-green-lightest);
         margin: 0;
-        padding-top: 4%;
-        padding-bottom: 4%;
-        padding-left: 5%;
-        margin-left: 10%; /* necessary for the little curved bit to fit in the box */
-        padding-right: 5%;
-        border-bottom-right-radius: 15px;
-        font-size: 26px;
-    }
-    h2::before {
-        position: absolute;
-        width: 30px;
-        height: 15px;
-        content: "";
-        top: 0;
-        right: -30px;
-        background-color: transparent;
-        border-top-left-radius: 15px;
-        box-shadow: -15px 0 var(--YOO-green-lightest);
-        margin-left: 50px;
-        overflow: hidden;
-    }
-    h2::after {
-        position: absolute;
-        width: 15px;
-        height: 30px;
-        content: "";
-        bottom: -30px;
-        left: 0px;
-        background-color: transparent;
-        border-top-left-radius: 15px;
-        box-shadow: 0 -15px var(--YOO-green-lightest);
-        overflow: hidden;
+        padding-top: 10px;
+        padding-bottom: 30px;
+        font-size: 40px;
+        text-align: center;
     }
     .slide {
         width: 100%;
@@ -115,7 +93,7 @@
         padding-right: 5%;
     }
     h3 {
-        font-size: 40px;
+        font-size: 26px;
         margin: 0px;
     }
     p {
@@ -137,7 +115,7 @@
     .indicators {
         display: flex;
         position: absolute;
-        bottom: 0;
+        bottom: -2em;
         left: 50%;
         transform: translate(-50%, 0);
     }
@@ -146,9 +124,9 @@
         background-color: black;
     }
     .wrapper { z-index: 1; }
-    h2 { z-index: 999!important; }
 </style>
 
+<h2>{title}</h2>
 <div class="wrapper">
     <button class="left" on:click={()=>slide=mod(slide-1,images.length)} aria-label="Left">
         <svg viewBox="0 0 24 24" style="width: 50px; height: 50px;">
@@ -168,7 +146,6 @@
                 </div>
             </div>
         {/each}
-        <h2>{title}</h2>
     </div>
     <button class="right" on:click={()=>slide=mod(slide+1,images.length)} aria-label="Right">
         <svg viewBox="0 0 24 24" style="width: 50px; height: 50px;">
